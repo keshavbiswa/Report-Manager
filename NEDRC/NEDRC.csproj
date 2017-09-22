@@ -207,6 +207,10 @@
     <Compile Include="Migrations\201709220655454_ModifiedSignature.Designer.cs">
       <DependentUpon>201709220655454_ModifiedSignature.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709220824053_SeedUsers.cs" />
+    <Compile Include="Migrations\201709220824053_SeedUsers.Designer.cs">
+      <DependentUpon>201709220824053_SeedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -311,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709220655454_ModifiedSignature.resx">
       <DependentUpon>201709220655454_ModifiedSignature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709220824053_SeedUsers.resx">
+      <DependentUpon>201709220824053_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
