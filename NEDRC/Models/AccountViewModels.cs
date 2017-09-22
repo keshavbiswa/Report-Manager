@@ -80,8 +80,12 @@ namespace NEDRC.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
         [Required]
+        [Display(Name=" Username")]
         [StringLength(100, ErrorMessage = "The name must be at most 100 characters")]
         public string Name { get; set; }
+        
+        [Display(Name="Signature")]
+        public byte[] Signature { get; set; }
     }
 
     public class ResetPasswordViewModel

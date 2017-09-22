@@ -195,9 +195,22 @@
     <Compile Include="Migrations\201709211135468_addUserNameInRegisterViewModel.Designer.cs">
       <DependentUpon>201709211135468_addUserNameInRegisterViewModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709211209182_AddedSignature.cs" />
+    <Compile Include="Migrations\201709211209182_AddedSignature.Designer.cs">
+      <DependentUpon>201709211209182_AddedSignature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709220609079_AddedSignature1.cs" />
+    <Compile Include="Migrations\201709220609079_AddedSignature1.Designer.cs">
+      <DependentUpon>201709220609079_AddedSignature1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709220655454_ModifiedSignature.cs" />
+    <Compile Include="Migrations\201709220655454_ModifiedSignature.Designer.cs">
+      <DependentUpon>201709220655454_ModifiedSignature.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -289,6 +302,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709211135468_addUserNameInRegisterViewModel.resx">
       <DependentUpon>201709211135468_addUserNameInRegisterViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709211209182_AddedSignature.resx">
+      <DependentUpon>201709211209182_AddedSignature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709220609079_AddedSignature1.resx">
+      <DependentUpon>201709220609079_AddedSignature1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709220655454_ModifiedSignature.resx">
+      <DependentUpon>201709220655454_ModifiedSignature.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
