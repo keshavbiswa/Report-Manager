@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace NEDRC.Controllers
 {
@@ -172,6 +173,13 @@ namespace NEDRC.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //TempCode 
+
+                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    await roleManager.CreateAsync(new IdentityRole("CanManageUsers"));
+
+                    await UserManager.AddToRoleAsync(user.Id, "CanManageUsers");
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
