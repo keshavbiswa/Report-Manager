@@ -97,6 +97,10 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Select.Pdf, Version=17.2.0.0, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
+      <HintPath>..\packages\Select.Pdf.17.2.0\lib\net40\Select.Pdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -182,8 +186,28 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DemoModelsController.cs" />
+    <Compile Include="Migrations\201710030844381_demoModel.cs" />
+    <Compile Include="Migrations\201710030844381_demoModel.Designer.cs">
+      <DependentUpon>201710030844381_demoModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710071121183_removedKeyAndRevertedToNormal.cs" />
+    <Compile Include="Migrations\201710071121183_removedKeyAndRevertedToNormal.Designer.cs">
+      <DependentUpon>201710071121183_removedKeyAndRevertedToNormal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710071142079_addedUsersInReportsModel.cs" />
+    <Compile Include="Migrations\201710071142079_addedUsersInReportsModel.Designer.cs">
+      <DependentUpon>201710071142079_addedUsersInReportsModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710071146368_addedUserId.cs" />
+    <Compile Include="Migrations\201710071146368_addedUserId.Designer.cs">
+      <DependentUpon>201710071146368_addedUserId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DemoModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,15 +235,44 @@
     <Compile Include="Migrations\201709220824053_SeedUsers.Designer.cs">
       <DependentUpon>201709220824053_SeedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709221239507_AddReports.cs" />
+    <Compile Include="Migrations\201709221239507_AddReports.Designer.cs">
+      <DependentUpon>201709221239507_AddReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709250744072_newReportsViewModel.cs" />
+    <Compile Include="Migrations\201709250744072_newReportsViewModel.Designer.cs">
+      <DependentUpon>201709250744072_newReportsViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709250751533_DateTimeToDateTime.cs" />
+    <Compile Include="Migrations\201709250751533_DateTimeToDateTime.Designer.cs">
+      <DependentUpon>201709250751533_DateTimeToDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709250759323_ChangedReportsModel.cs" />
+    <Compile Include="Migrations\201709250759323_ChangedReportsModel.Designer.cs">
+      <DependentUpon>201709250759323_ChangedReportsModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709251013552_UpdatedReportsModelAgain.cs" />
+    <Compile Include="Migrations\201709251013552_UpdatedReportsModelAgain.Designer.cs">
+      <DependentUpon>201709251013552_UpdatedReportsModelAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709251103118_AddedDescriptionInReports.cs" />
+    <Compile Include="Migrations\201709251103118_AddedDescriptionInReports.Designer.cs">
+      <DependentUpon>201709251103118_AddedDescriptionInReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Reports.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-NEDRC-20170921035422.mdf" />
+    <Content Include="App_Data\aspnet-NEDRC-20170921035422_log.ldf">
+      <DependentUpon>aspnet-NEDRC-20170921035422.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-flatly.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -290,9 +343,20 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_NavBarView.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\ManageUser.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Report\Create.cshtml" />
+    <Content Include="Views\DemoModels\Create.cshtml" />
+    <Content Include="Views\DemoModels\Delete.cshtml" />
+    <Content Include="Views\DemoModels\Details.cshtml" />
+    <Content Include="Views\DemoModels\Edit.cshtml" />
+    <Content Include="Views\DemoModels\Index.cshtml" />
+    <Content Include="Views\Report\ApproveResult.cshtml" />
+    <Content Include="Views\Report\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -318,6 +382,36 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709220824053_SeedUsers.resx">
       <DependentUpon>201709220824053_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709221239507_AddReports.resx">
+      <DependentUpon>201709221239507_AddReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709250744072_newReportsViewModel.resx">
+      <DependentUpon>201709250744072_newReportsViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709250751533_DateTimeToDateTime.resx">
+      <DependentUpon>201709250751533_DateTimeToDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709250759323_ChangedReportsModel.resx">
+      <DependentUpon>201709250759323_ChangedReportsModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709251013552_UpdatedReportsModelAgain.resx">
+      <DependentUpon>201709251013552_UpdatedReportsModelAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709251103118_AddedDescriptionInReports.resx">
+      <DependentUpon>201709251103118_AddedDescriptionInReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710030844381_demoModel.resx">
+      <DependentUpon>201710030844381_demoModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710071121183_removedKeyAndRevertedToNormal.resx">
+      <DependentUpon>201710071121183_removedKeyAndRevertedToNormal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710071142079_addedUsersInReportsModel.resx">
+      <DependentUpon>201710071142079_addedUsersInReportsModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710071146368_addedUserId.resx">
+      <DependentUpon>201710071146368_addedUserId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

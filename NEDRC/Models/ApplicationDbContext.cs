@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
 namespace NEDRC.Models
 {
@@ -13,5 +14,9 @@ namespace NEDRC.Models
         {
             return new ApplicationDbContext();
         }
+        public DbSet<Reports> Reports { get; set; }
+
+        public DbSet<DemoModel> DemoModels { get; set; }
+        //public System.Data.Entity.DbSet<NEDRC.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

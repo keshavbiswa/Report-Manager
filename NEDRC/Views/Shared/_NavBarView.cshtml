@@ -13,6 +13,15 @@
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 <li>@Html.ActionLink("About", "About", "Home")</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                @if (User.IsInRole("CanManageUsers"))
+                {
+                    <li>@Html.ActionLink("Administration","Index","Admin")</li>
+                    <li>@Html.ActionLink("Manage Users","ManageUser","Admin")</li>
+                }
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("ManageReports","Index","Report")</li>
+                }
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
