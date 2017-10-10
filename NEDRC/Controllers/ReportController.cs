@@ -102,7 +102,7 @@ namespace NEDRC.Controllers
             }
         }
 
-        // GET: Reports/Delete/5
+        // GET: Reports/ApproveResult/5
         public ActionResult ApproveResult(int? id)
         {
             if (id == null)
@@ -130,9 +130,6 @@ namespace NEDRC.Controllers
 
             byte[] content = reports.Content;
             byte[] signature = users.Signature;
-
-            var imgPath = Server.MapPath("~") + "/Content/img/signature.jpg";
-            var pdfFile = Server.MapPath("~") + "/Content/pdf/21395B.pdf";
 
             iTextSharp.text.Image sigImg = iTextSharp.text.Image.GetInstance(signature);
 

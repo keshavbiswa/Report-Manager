@@ -17,6 +17,8 @@ namespace NEDRC.Models
         public DbSet<Reports> Reports { get; set; }
 
         public DbSet<DemoModel> DemoModels { get; set; }
+
+        //public DbSet<NEDRC.Models.ApplicationUser> ApplicationUsers { get; set; }
         //public System.Data.Entity.DbSet<NEDRC.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

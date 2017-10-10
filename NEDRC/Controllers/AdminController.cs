@@ -1,16 +1,50 @@
-﻿using System.Net;
+﻿using NEDRC.Models;
+using System.Linq;
+using System.Net;
 using System.Web.Mvc;
-using NEDRC.Models;
 
 namespace NEDRC.Controllers
 {
     public class AdminController : Controller
     {
+        private readonly ApplicationDbContext db;
+        public AdminController()
+        {
+            db = new ApplicationDbContext();
+        }
         // GET: Admin
         public ActionResult Index()
         {
-            return View();
+            return View(db.Users.ToList());
         }
+
+        // GET: Admin/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ApplicationUser user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        // POST: Admin/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            ApplicationUser user = db.Users.Find(id);
+            db.Users.Remove(user);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
         public ActionResult ManageUser()
         {
             return View();
