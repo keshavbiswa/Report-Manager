@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace NEDRC.Models
 {
@@ -12,6 +12,7 @@ namespace NEDRC.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+        public bool HasSignature { get; set; }
     }
 
     public class ManageLoginsViewModel
@@ -39,6 +40,17 @@ namespace NEDRC.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class ChangeSignatureViewModel
+    {
+
+        [Display(Name = "Old Signature")]
+        public byte[] OldSignature { get; set; }
+
+        [Required]
+        [Display(Name="New Signature")]
+        public byte[] NewSignature { get; set; }
+
+    }
     public class ChangePasswordViewModel
     {
         [Required]

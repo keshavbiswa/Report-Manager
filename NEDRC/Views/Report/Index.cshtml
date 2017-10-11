@@ -10,6 +10,8 @@
 
 <h2>Index</h2>
 
+<p class="text-success">@ViewBag.StatusMessage</p>
+
 <p>
     @if (User.IsInRole("CanManageUsers"))
     {
@@ -64,7 +66,6 @@
             <td>
                 @if (User.IsInRole("CanManageUsers"))
                 {
-                    @Html.ActionLink("Edit |", "Edit", new { id = item.ReportId })
                     @Html.ActionLink("Delete |", "Delete", new { id = item.ReportId })
                     @Html.ActionLink(" View", "View", new { id = item.ReportId })
                 }

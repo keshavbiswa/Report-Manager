@@ -14,9 +14,11 @@ namespace NEDRC.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly ApplicationDbContext db;
 
         public ManageController()
         {
+            db = new ApplicationDbContext();
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -60,6 +62,7 @@ namespace NEDRC.Controllers
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : message == ManageMessageId.ChangeSignatureSuccess ? "Your signature has been changed."
                 : "";
 
             var userId = User.Identity.GetUserId();
@@ -69,7 +72,8 @@ namespace NEDRC.Controllers
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                HasSignature = HasSignature()
             };
             return View(model);
         }
@@ -244,6 +248,34 @@ namespace NEDRC.Controllers
         }
 
         //
+        // GET: /Manage/ChangeSignature
+        public ActionResult ChangeSignature()
+        {
+            var user = db.Users.Find(User.Identity.GetUserId());
+            var viewModel = new ChangeSignatureViewModel
+            {
+                OldSignature = user.Signature
+            };
+            return View(viewModel);
+        }
+
+        //
+        // POST: /Manage/ChangeSignature
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeSignature(ChangeSignatureViewModel model, HttpPostedFileBase upload)
+        {
+            if (upload == null || upload.ContentLength <= 0) return View();
+            var reader = new System.IO.BinaryReader(upload.InputStream);
+
+            var user = db.Users.Find(User.Identity.GetUserId());
+            user.Signature = reader.ReadBytes(upload.ContentLength);
+            reader.Close();
+            db.SaveChanges();
+
+            return RedirectToAction("Index", new { Message = ManageMessageId.ChangeSignatureSuccess });
+        }
+        //
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
         {
@@ -352,6 +384,16 @@ namespace NEDRC.Controllers
             }
         }
 
+        private bool HasSignature()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            if (user?.Signature != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
         private bool HasPassword()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
@@ -380,6 +422,7 @@ namespace NEDRC.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
+            ChangeSignatureSuccess,
             Error
         }
 

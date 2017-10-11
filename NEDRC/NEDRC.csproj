@@ -97,6 +97,14 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Select.Pdf, Version=17.2.0.0, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
       <HintPath>..\packages\Select.Pdf.17.2.0\lib\net40\Select.Pdf.dll</HintPath>
       <Private>True</Private>
@@ -204,6 +212,14 @@
     <Compile Include="Migrations\201710071146368_addedUserId.Designer.cs">
       <DependentUpon>201710071146368_addedUserId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710100954303_CreatedChangeSignatureViewModel.cs" />
+    <Compile Include="Migrations\201710100954303_CreatedChangeSignatureViewModel.Designer.cs">
+      <DependentUpon>201710100954303_CreatedChangeSignatureViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710110633042_New.cs" />
+    <Compile Include="Migrations\201710110633042_New.Designer.cs">
+      <DependentUpon>201710110633042_New.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\DemoModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -267,6 +283,8 @@
     <Compile Include="Models\Reports.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\ContactViewModel.cs" />
+    <Compile Include="ViewModel\ReportViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\aspnet-NEDRC-20170921035422.mdf" />
@@ -278,6 +296,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -290,6 +309,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\OwnServer.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -353,10 +373,9 @@
     <Content Include="Views\DemoModels\Index.cshtml" />
     <Content Include="Views\Report\ApproveResult.cshtml" />
     <Content Include="Views\Report\Delete.cshtml" />
+    <Content Include="Views\Manage\ChangeSignature.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
@@ -411,6 +430,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710071146368_addedUserId.resx">
       <DependentUpon>201710071146368_addedUserId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710100954303_CreatedChangeSignatureViewModel.resx">
+      <DependentUpon>201710100954303_CreatedChangeSignatureViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710110633042_New.resx">
+      <DependentUpon>201710110633042_New.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

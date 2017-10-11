@@ -1,5 +1,4 @@
-﻿using System;
-using iTextSharp.text;
+﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.AspNet.Identity;
 using NEDRC.Models;
@@ -8,7 +7,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using NEDRC.Migrations;
 
 namespace NEDRC.Controllers
 {
@@ -49,11 +47,12 @@ namespace NEDRC.Controllers
                     Content = reader.ReadBytes(upload.ContentLength)
                 };
                 db.Reports.Add(report);
+                reader.Close();
                 db.SaveChanges();
                 RedirectToAction("Index");
             }
-            RedirectToAction("Index");
-            return View(reports);
+            
+            return RedirectToAction("Index");
         }
         // GET: Reports/Delete/5
         public ActionResult Delete(int? id)
@@ -140,7 +139,7 @@ namespace NEDRC.Controllers
                 {
                     PdfStamper stamper = new PdfStamper(reader, ms);
 
-                    sigImg.SetAbsolutePosition(480f, 10f);
+                    sigImg.SetAbsolutePosition(450, 30f);
 
                     sigImg.ScalePercent(25.0f); // 100.0f == same size
 

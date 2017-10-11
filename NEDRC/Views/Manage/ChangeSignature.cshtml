@@ -1,0 +1,37 @@
+﻿@model NEDRC.Models.ChangeSignatureViewModel
+@{
+    ViewBag.Title = "ChangeSignature";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ChangeSignature</h2>
+
+<h4>Your Previous Signature </h4>
+@{
+    var base64 = Convert.ToBase64String(Model.OldSignature);
+    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+}
+
+<img class="img-thumbnail" src ="@imgSrc">
+
+@using (Html.BeginForm("ChangeSignature", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype="multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    <h4>Change Signature Form</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.NewSignature, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type ="file" name ="upload" id ="fileUpload" accept=".jpg" class="form-control"/>
+            @Html.ValidationMessageFor(model => model.NewSignature, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Change" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+

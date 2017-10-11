@@ -19,6 +19,7 @@ namespace NEDRC.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public string Date { get; set; }
+        [Display(Name = "Is Approved?")]
         public bool IsApproved { get; set; }
         public Reports()
         {
@@ -26,7 +27,8 @@ namespace NEDRC.Models
         }
         [Required(ErrorMessage = "Please upload the report file.")]
         public byte[] Content { get; set; }
-        public int UserId { get; set; }
+        [Display(Name = "Assigned To")]
+        public string UserId { get; set; }
         public ApplicationUser User { get; set; }
         
     }
