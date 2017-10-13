@@ -19,7 +19,7 @@ namespace NEDRC.Controllers
         }
 
         // GET: Admin/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -36,7 +36,7 @@ namespace NEDRC.Controllers
         // POST: Admin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             ApplicationUser user = db.Users.Find(id);
             db.Users.Remove(user);
@@ -45,9 +45,9 @@ namespace NEDRC.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult ManageUser()
+        public ActionResult Details(string id)
         {
-            return View();
+            return View(db.Users.Find(id));
         }
     }
 }

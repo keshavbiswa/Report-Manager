@@ -15,8 +15,7 @@
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 @if (User.IsInRole("CanManageUsers"))
                 {
-                    <li>@Html.ActionLink("Administration","Index","Admin")</li>
-                    <li>@Html.ActionLink("Manage Users","ManageUser","Admin")</li>
+                    <li>@Html.ActionLink("Manage Users","Index","Admin")</li>
                 }
                 @if (User.Identity.IsAuthenticated)
                 {

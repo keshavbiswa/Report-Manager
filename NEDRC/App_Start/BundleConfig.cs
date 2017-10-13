@@ -24,7 +24,8 @@ namespace NEDRC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-flatly.min.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/one-page-wonder.css"));
         }
     }
 }
