@@ -2,6 +2,7 @@
 using iTextSharp.text.pdf;
 using Microsoft.AspNet.Identity;
 using NEDRC.Models;
+using System;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -37,11 +38,11 @@ namespace NEDRC.Controllers
             if (upload != null && upload.ContentLength > 0)
             {
                 var reader = new System.IO.BinaryReader(upload.InputStream);
-
+               
                 var report = new Reports
                 {
                     Name = reports.Name,
-                    Date = reports.Date,
+                    Date = DateTime.Now.ToString(),
                     IsApproved = reports.IsApproved,
                     Description = reports.Description,
                     Content = reader.ReadBytes(upload.ContentLength)
@@ -139,7 +140,7 @@ namespace NEDRC.Controllers
                 {
                     PdfStamper stamper = new PdfStamper(reader, ms);
 
-                    sigImg.SetAbsolutePosition(450, 30f);
+                    sigImg.SetAbsolutePosition(450f, 80f);
 
                     sigImg.ScalePercent(25.0f); // 100.0f == same size
 
