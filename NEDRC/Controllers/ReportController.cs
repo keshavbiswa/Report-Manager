@@ -42,10 +42,11 @@ namespace NEDRC.Controllers
                 var report = new Reports
                 {
                     Name = reports.Name,
-                    Date = DateTime.Now.ToString(),
+                    Date = DateTime.Now.ToShortDateString(),
                     IsApproved = reports.IsApproved,
                     Description = reports.Description,
                     Content = reader.ReadBytes(upload.ContentLength)
+
                 };
                 db.Reports.Add(report);
                 reader.Close();
