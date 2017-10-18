@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using NEDRC.ViewModel;
 
 namespace NEDRC.Controllers
 {
@@ -29,7 +30,11 @@ namespace NEDRC.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new ReportViewModel
+            {
+                ApplicationUsers = db.Users.ToList()
+            };
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -46,6 +51,7 @@ namespace NEDRC.Controllers
                     IsApproved = reports.IsApproved,
                     Description = reports.Description,
                     Content = reader.ReadBytes(upload.ContentLength)
+                    UserId = 
 
                 };
                 db.Reports.Add(report);
