@@ -288,6 +288,10 @@
     <Compile Include="Migrations\201710110726574_RevertedBackOneStep.Designer.cs">
       <DependentUpon>201710110726574_RevertedBackOneStep.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710230804209_newMigration.cs" />
+    <Compile Include="Migrations\201710230804209_newMigration.Designer.cs">
+      <DependentUpon>201710230804209_newMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -456,6 +460,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710110726574_RevertedBackOneStep.resx">
       <DependentUpon>201710110726574_RevertedBackOneStep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710230804209_newMigration.resx">
+      <DependentUpon>201710230804209_newMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

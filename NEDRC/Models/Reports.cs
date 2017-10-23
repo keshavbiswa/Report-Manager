@@ -14,6 +14,7 @@ namespace NEDRC.Models
         [Required(ErrorMessage = "Please Enter the description of the report.")]
         [DataType(DataType.MultilineText)]
         [Display(Name = "Description")]
+
         public string Description { get; set; }
         [Required(ErrorMessage = "Please enter the Date ")]
         [DataType(DataType.Date)]
@@ -28,7 +29,6 @@ namespace NEDRC.Models
         [Required(ErrorMessage = "Please upload the report file.")]
         public byte[] Content { get; set; }
         [Display(Name = "Assigned To")]
-        public string UserId { get; set; }
         public ApplicationUser User { get; set; }
         
     }
