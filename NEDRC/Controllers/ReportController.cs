@@ -2,11 +2,13 @@
 using iTextSharp.text.pdf;
 using Microsoft.AspNet.Identity;
 using NEDRC.Models;
+using System;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using NEDRC.ViewModel;
 
 namespace NEDRC.Controllers
 {
@@ -28,7 +30,11 @@ namespace NEDRC.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new ReportViewModel
+            {
+                ApplicationUsers = db.Users.ToList()
+            };
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -37,14 +43,16 @@ namespace NEDRC.Controllers
             if (upload != null && upload.ContentLength > 0)
             {
                 var reader = new System.IO.BinaryReader(upload.InputStream);
-
+               
                 var report = new Reports
                 {
                     Name = reports.Name,
-                    Date = reports.Date,
+                    Date = DateTime.Now.ToShortDateString(),
                     IsApproved = reports.IsApproved,
                     Description = reports.Description,
                     Content = reader.ReadBytes(upload.ContentLength)
+                    UserId = 
+
                 };
                 db.Reports.Add(report);
                 reader.Close();
@@ -139,7 +147,7 @@ namespace NEDRC.Controllers
                 {
                     PdfStamper stamper = new PdfStamper(reader, ms);
 
-                    sigImg.SetAbsolutePosition(450, 30f);
+                    sigImg.SetAbsolutePosition(450f, 80f);
 
                     sigImg.ScalePercent(25.0f); // 100.0f == same size
 
