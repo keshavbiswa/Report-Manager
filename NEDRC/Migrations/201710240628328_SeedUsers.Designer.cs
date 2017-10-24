@@ -13,7 +13,7 @@ namespace NEDRC.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201709220824053_SeedUsers"; }
+            get { return "201710240628328_SeedUsers"; }
         }
         
         string IMigrationMetadata.Source

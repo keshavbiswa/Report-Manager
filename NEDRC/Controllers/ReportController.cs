@@ -51,7 +51,6 @@ namespace NEDRC.Controllers
                     IsApproved = reports.IsApproved,
                     Description = reports.Description,
                     Content = reader.ReadBytes(upload.ContentLength)
-                    UserId = 
 
                 };
                 db.Reports.Add(report);
