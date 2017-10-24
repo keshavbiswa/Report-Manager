@@ -19,7 +19,5 @@ namespace NEDRC.Controllers
 
             return View();
         }
-
-        
     }
 }
