@@ -256,10 +256,6 @@
     <Compile Include="Migrations\201709220655454_ModifiedSignature.Designer.cs">
       <DependentUpon>201709220655454_ModifiedSignature.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709220824053_SeedUsers.cs" />
-    <Compile Include="Migrations\201709220824053_SeedUsers.Designer.cs">
-      <DependentUpon>201709220824053_SeedUsers.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201709221239507_AddReports.cs" />
     <Compile Include="Migrations\201709221239507_AddReports.Designer.cs">
       <DependentUpon>201709221239507_AddReports.cs</DependentUpon>
@@ -292,6 +288,10 @@
     <Compile Include="Migrations\201710230804209_newMigration.Designer.cs">
       <DependentUpon>201710230804209_newMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710240758394_changedUserToStringInReportsModel.cs" />
+    <Compile Include="Migrations\201710240758394_changedUserToStringInReportsModel.Designer.cs">
+      <DependentUpon>201710240758394_changedUserToStringInReportsModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -300,7 +300,6 @@
     <Compile Include="Models\Reports.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModel\ContactViewModel.cs" />
     <Compile Include="ViewModel\ReportViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -329,6 +328,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="app.config" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\MyASP.net.pubxml" />
     <None Include="Properties\PublishProfiles\nedrc.pubxml" />
     <None Include="Properties\PublishProfiles\OwnServer.pubxml" />
@@ -419,9 +419,6 @@
     <EmbeddedResource Include="Migrations\201709220655454_ModifiedSignature.resx">
       <DependentUpon>201709220655454_ModifiedSignature.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709220824053_SeedUsers.resx">
-      <DependentUpon>201709220824053_SeedUsers.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709221239507_AddReports.resx">
       <DependentUpon>201709221239507_AddReports.cs</DependentUpon>
     </EmbeddedResource>
@@ -463,6 +460,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710230804209_newMigration.resx">
       <DependentUpon>201710230804209_newMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710240758394_changedUserToStringInReportsModel.resx">
+      <DependentUpon>201710240758394_changedUserToStringInReportsModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

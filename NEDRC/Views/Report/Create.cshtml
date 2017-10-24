@@ -36,10 +36,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Reports.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Reports.User, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.DropDownListFor(model => model.ApplicationUser, new SelectList(items: Model.ApplicationUsers, dataValueField: "Id", dataTextField: "Name")," ", new {@class = "form-control"})
+                    @Html.DropDownListFor(model => model.Reports.User , new SelectList(items: Model.ApplicationUsers, dataValueField: "Id", dataTextField: "Name")," ", new {@class = "form-control"})
                 </div>
             </div>
         </div>

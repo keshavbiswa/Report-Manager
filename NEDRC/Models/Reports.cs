@@ -29,6 +29,6 @@ namespace NEDRC.Models
         [Required(ErrorMessage = "Please upload the report file.")]
         public byte[] Content { get; set; }
         [Display(Name = "Assigned To")]
-        public ApplicationUser User { get; set; }
+        public string User { get; set; }
     }
 }

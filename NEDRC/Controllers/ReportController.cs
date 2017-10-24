@@ -50,8 +50,8 @@ namespace NEDRC.Controllers
                     Date = DateTime.Now.ToShortDateString(),
                     IsApproved = reports.IsApproved,
                     Description = reports.Description,
-                    Content = reader.ReadBytes(upload.ContentLength)
-
+                    Content = reader.ReadBytes(upload.ContentLength),
+                    User = reports.User
                 };
                 db.Reports.Add(report);
                 reader.Close();

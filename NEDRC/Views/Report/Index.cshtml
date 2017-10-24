@@ -72,7 +72,7 @@
                 else
                 {
                     @Html.ActionLink("View |", "View", new { id = item.ReportId })
-                    if (item.IsApproved == false)
+                    if (item.IsApproved == false && item.User == User.Identity.GetUserId())
                     {
                         @Html.ActionLink("Approve", "ApproveResult", new { id = item.ReportId })
                     }
