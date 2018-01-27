@@ -401,6 +401,7 @@
     <Content Include="Views\Manage\ChangeSignature.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Manage\SuccessPhoneNumber.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
